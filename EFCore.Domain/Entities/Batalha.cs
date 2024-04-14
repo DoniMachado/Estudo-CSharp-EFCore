@@ -1,4 +1,4 @@
-﻿namespace EFCore.WebAPI.Models;
+﻿namespace EFCore.Domain.Entities;
 
 public class Batalha
 {    

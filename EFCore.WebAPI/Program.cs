@@ -1,4 +1,4 @@
-using EFCore.WebAPI.Data;
+using EFCore.Repository.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
