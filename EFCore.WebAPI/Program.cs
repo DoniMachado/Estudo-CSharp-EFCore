@@ -1,28 +1,28 @@
-using EFCore.Repository.Data.Context;
+using EFCore.Repository.Context;
+using EFCore.WebAPI;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var startup = new Startup(builder.Environment);
 
-// Add services to the container.
+startup.ConfigureServices(builder);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<HeroiContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var app = builder.Build();
+    startup.Configure(app, builder.Environment);
+
+
+    app.Run();
 }
+catch (Exception)
+{
 
-app.UseAuthorization();
 
-app.MapControllers();
+}
+finally
+{
 
-app.Run();
+}
