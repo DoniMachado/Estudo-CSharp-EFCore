@@ -17,10 +17,10 @@ public class Entity
         EntityStatus = EntityStatus.Active;
     }
 
-    //public void ArchiveEntity()
-    //{
-    //    EntityStatus = EntityStatus.Archived;
-    //}
+    public void ArchiveEntity()
+    {
+        EntityStatus = EntityStatus.Archived;
+    }
 
     public void DeleteEntity()
     {

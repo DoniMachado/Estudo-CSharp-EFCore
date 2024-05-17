@@ -1,8 +1,9 @@
 ﻿using EFCore.Domain.Entities;
-using EFCore.Repository.Behaviors;
+using EFCore.Repository.Extensions;
 using EFCore.Repository.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Reflection;
 
 namespace EFCore.Repository.Context;
 
@@ -20,7 +21,7 @@ public class HeroContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(HeroMapping).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         ValueConverter<DateTimeOffset, DateTimeOffset> converter = new(d => d, d => TimeZoneInfo.ConvertTime(d, TimeZoneInfo.Local));
 

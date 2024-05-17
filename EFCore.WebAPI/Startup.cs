@@ -33,6 +33,9 @@ public class Startup
                             sqlOptions.EnableRetryOnFailure(maxRetryCount:10,maxRetryDelay:TimeSpan.FromSeconds(30),errorNumbersToAdd: null);
                             sqlOptions.CommandTimeout(180);
                         }));
+
+
+        //services.Scan();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,7 +1,7 @@
 ﻿using EFCore.Domain.Entities;
 using EFCore.Domain.ValueObject;
 
-namespace EFCore.Repository.Interfaces;
+namespace EFCore.Domain.Interfaces;
 
 public interface IRepository<TEntity> where TEntity : Entity
 {

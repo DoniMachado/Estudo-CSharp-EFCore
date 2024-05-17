@@ -86,7 +86,7 @@ namespace EFCore.Repository.Repositories
         {
             return await Context.WithNoLock(async () =>
             {
-                return await Entity.FirstOrDefaultAsync(e => e.Id == id);
+                return await Entity.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
             } );
         }
 
