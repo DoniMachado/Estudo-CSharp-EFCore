@@ -1,4 +1,6 @@
-﻿using EFCore.Repository.Context;
+﻿using EFCore.Domain.Interfaces;
+using EFCore.Repository.Context;
+using EFCore.Repository.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCore.WebAPI;
@@ -35,7 +37,13 @@ public class Startup
                         }));
 
 
-        //services.Scan();
+        services.Scan(i =>
+        i.FromCallingAssembly()
+        .AddClasses(classes => classes.AssignableTo(typeof(Repository<>))
+            .Where(type => type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRepository<>))))
+        .AsImplementedInterfaces()
+        .WithScopedLifetime()
+        ); 
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -12,11 +12,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Scrutor" Version="4.2.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EFCore.Repository\EFCore.Repository.csproj" />
+    <ProjectReference Include="..\EFCore.Repository\EFCore.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

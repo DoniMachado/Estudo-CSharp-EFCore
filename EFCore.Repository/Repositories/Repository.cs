@@ -1,11 +1,9 @@
 ﻿using EFCore.Domain.Entities;
-using EFCore.Domain.Enum;
+using EFCore.Domain.Interfaces;
 using EFCore.Domain.ValueObject;
 using EFCore.Repository.Context;
 using EFCore.Repository.Extensions;
-using EFCore.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
 
 namespace EFCore.Repository.Repositories
 {
