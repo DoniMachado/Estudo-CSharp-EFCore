@@ -1,8 +1,8 @@
 ﻿using EFCore.Domain.Entities;
 using EFCore.Domain.Interfaces;
-using EFCore.Repository.Context;
+using EFCore.Infrastructure.Context;
 
-namespace EFCore.Repository.Repositories
+namespace EFCore.Infrastructure.Repositories
 {
     public class WeaponRepository : Repository<Weapon>, IWeaponRepository
     {

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EFCore.Repository.Mappings;
+namespace EFCore.Infrastructure.Mappings;
 
 public class HeroMapping: EntityMapping<Hero>
 {

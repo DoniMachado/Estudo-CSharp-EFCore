@@ -1,6 +1,6 @@
 ﻿using EFCore.Domain.Interfaces;
-using EFCore.Repository.Context;
-using EFCore.Repository.Repositories;
+using EFCore.Infrastructure.Context;
+using EFCore.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCore.WebAPI;

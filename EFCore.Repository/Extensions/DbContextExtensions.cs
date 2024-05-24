@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EFCore.Repository.Extensions;
+namespace EFCore.Infrastructure.Extensions;
 
 public static class DbContextExtensions
 {

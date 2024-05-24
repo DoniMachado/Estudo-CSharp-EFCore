@@ -1,11 +1,10 @@
 ﻿using EFCore.Domain.Entities;
-using EFCore.Repository.Extensions;
-using EFCore.Repository.Mappings;
+using EFCore.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Reflection;
 
-namespace EFCore.Repository.Context;
+namespace EFCore.Infrastructure.Context;
 
 public class HeroContext : DbContext
 {

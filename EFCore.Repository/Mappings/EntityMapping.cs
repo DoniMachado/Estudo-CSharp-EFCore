@@ -3,7 +3,7 @@ using EFCore.Domain.Enum;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EFCore.Repository.Mappings;
+namespace EFCore.Infrastructure.Mappings;
 
 public abstract class EntityMapping<TEntity> : IEntityTypeConfiguration<TEntity>
         where TEntity : Entity

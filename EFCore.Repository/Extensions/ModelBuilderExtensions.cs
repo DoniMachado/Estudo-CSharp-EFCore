@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Linq.Expressions;
 
-namespace EFCore.Repository.Extensions;
+namespace EFCore.Infrastructure.Extensions;
 
 public static class ModelBuilderExtensions
 {

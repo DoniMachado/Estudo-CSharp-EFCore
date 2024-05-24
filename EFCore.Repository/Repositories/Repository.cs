@@ -1,11 +1,11 @@
 ﻿using EFCore.Domain.Entities;
 using EFCore.Domain.Interfaces;
 using EFCore.Domain.ValueObject;
-using EFCore.Repository.Context;
-using EFCore.Repository.Extensions;
+using EFCore.Infrastructure.Context;
+using EFCore.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFCore.Repository.Repositories
+namespace EFCore.Infrastructure.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
