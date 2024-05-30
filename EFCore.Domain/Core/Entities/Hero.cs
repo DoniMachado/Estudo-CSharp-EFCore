@@ -1,9 +1,10 @@
 ﻿using System.Text.Json.Serialization;
+using EFCore.Domain.Common.Entities;
 
-namespace EFCore.Domain.Entities;
+namespace EFCore.Domain.Core.Entities;
 
-public class Hero: Entity
-{   
+public class Hero : Entity
+{
     public string Name { get; private set; }
 
     public SecretIdentity SecretIdentity { get; set; }

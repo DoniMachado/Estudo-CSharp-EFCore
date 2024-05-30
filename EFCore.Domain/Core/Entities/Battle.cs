@@ -1,8 +1,9 @@
 ﻿using System.Text.Json.Serialization;
+using EFCore.Domain.Common.Entities;
 
-namespace EFCore.Domain.Entities;
+namespace EFCore.Domain.Core.Entities;
 
-public class Battle: Entity
+public class Battle : Entity
 {
     public string Name { get; private set; }
     public string Description { get; private set; }
@@ -17,7 +18,7 @@ public class Battle: Entity
         Name = name;
         Description = description;
         InitialDate = initialDate;
-        FinalDate = finalDate;        
+        FinalDate = finalDate;
     }
 
     public void SetName(string name)

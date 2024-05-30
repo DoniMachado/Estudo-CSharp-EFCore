@@ -1,7 +1,5 @@
-using EFCore.Domain.Entities;
 using EFCore.Infrastructure.Context;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EFCore.WebAPI.Controllers
 {

@@ -1,6 +1,6 @@
-﻿using EFCore.Domain.Entities;
-using EFCore.Domain.Interfaces;
-using EFCore.Domain.ValueObject;
+﻿using EFCore.Domain.Common.Entities;
+using EFCore.Domain.Common.Interfaces;
+using EFCore.Domain.Common.ValueObject;
 using EFCore.Infrastructure.Context;
 using EFCore.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +20,7 @@ namespace EFCore.Infrastructure.Repositories
 
         public async Task InsertAsync(TEntity entity)
         {
-            if(entity is null)
-                throw new ArgumentNullException(nameof(entity));
+            ArgumentNullException.ThrowIfNull(entity);
 
             Entity.Add(entity);
             await Context.SaveChangesAsync();
@@ -38,11 +37,9 @@ namespace EFCore.Infrastructure.Repositories
 
         public async Task UpdateAsync(TEntity entity)
         {
-            if (entity is null)
-                throw new ArgumentNullException(nameof(entity));
+            ArgumentNullException.ThrowIfNull(entity);
 
-            entity.OnEntityModified();
-            Entity.Update(entity);
+            entity.SetUpdate();
             await Context.SaveChangesAsync();
         }
 
@@ -52,31 +49,27 @@ namespace EFCore.Infrastructure.Repositories
                 throw new ArgumentNullException(nameof(entities));
 
             foreach(TEntity entity in entities)
-                entity.OnEntityModified();
+                entity.SetUpdate();
 
-            Entity.UpdateRange(entities);
             await Context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(TEntity entity)
         {
-            if (entity is null)
-                throw new ArgumentNullException(nameof(entity));
+            ArgumentNullException.ThrowIfNull(entity);
 
-            entity.DeleteEntity();
-            Entity.Remove(entity);
+            entity.SetDeleted();
             await Context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(IEnumerable<TEntity> entities)
-        {
+        {            
             if (entities is null || entities.Any())
                 throw new ArgumentNullException(nameof(entities));
 
             foreach (TEntity entity in entities)
-                entity.DeleteEntity();
-
-            Entity.RemoveRange(entities);
+                entity.SetDeleted();
+            
             await Context.SaveChangesAsync();
         }
 
@@ -84,7 +77,7 @@ namespace EFCore.Infrastructure.Repositories
         {
             return await Context.WithNoLock(async () =>
             {
-                return await Entity.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
+                return await Entity.FirstOrDefaultAsync(e => e.Id == id);
             } );
         }
 

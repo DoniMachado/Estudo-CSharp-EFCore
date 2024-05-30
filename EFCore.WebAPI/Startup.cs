@@ -1,7 +1,5 @@
-﻿using EFCore.Domain.Interfaces;
-using EFCore.Infrastructure.Context;
-using EFCore.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using EFCore.Application;
+using EFCore.Infrastructure;
 
 namespace EFCore.WebAPI;
 
@@ -28,22 +26,8 @@ public class Startup
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
-        services.AddDbContext<HeroContext>(options =>
-                        options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"),
-                        sqlServerOptionsAction: sqlOptions =>
-                        {
-                            sqlOptions.EnableRetryOnFailure(maxRetryCount:10,maxRetryDelay:TimeSpan.FromSeconds(30),errorNumbersToAdd: null);
-                            sqlOptions.CommandTimeout(180);
-                        }));
-
-
-        services.Scan(i =>
-        i.FromCallingAssembly()
-        .AddClasses(classes => classes.AssignableTo(typeof(Repository<>))
-            .Where(type => type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRepository<>))))
-        .AsImplementedInterfaces()
-        .WithScopedLifetime()
-        ); 
+        services.AddApplication();
+        services.AddInfrastructure(_configuration);        
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,4 +1,4 @@
-﻿using EFCore.Domain.Entities;
+﻿using EFCore.Domain.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
