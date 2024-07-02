@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.WebAPI", "EFCore.Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Domain", "EFCore.Domain\EFCore.Domain.csproj", "{4C47AF71-9BCE-4475-9435-9F933216BA4A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Infrastructure", "EFCore.Repository\EFCore.Infrastructure.csproj", "{40CE69E7-F1CC-43A7-AAD2-9569A3B196D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Infrastructure", "EFCore.Infrastructure\EFCore.Infrastructure.csproj", "{40CE69E7-F1CC-43A7-AAD2-9569A3B196D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Application", "Application\EFCore.Application.csproj", "{D9B388FF-EA65-4EA8-B699-29EABA274CB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Application", "EFCore.Application\EFCore.Application.csproj", "{D9B388FF-EA65-4EA8-B699-29EABA274CB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
