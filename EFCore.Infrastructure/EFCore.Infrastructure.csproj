@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\EFCore.Application.csproj" />
+    <ProjectReference Include="..\EFCore.Application\EFCore.Application.csproj" />
   </ItemGroup>
 
 </Project>
