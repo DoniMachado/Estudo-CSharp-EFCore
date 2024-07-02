@@ -1,5 +1,8 @@
 ﻿using EFCore.Application;
 using EFCore.Infrastructure;
+using EFCore.WebAPI.Common.Middlewares;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 
 namespace EFCore.WebAPI;
 
@@ -22,16 +25,44 @@ public class Startup
     {
         IServiceCollection services = builder.Services;
 
+        builder.Services.AddRateLimiter(_ => _
+            .AddFixedWindowLimiter(policyName: "fixed", options =>
+            {
+                options.PermitLimit = 4;
+                options.Window = TimeSpan.FromSeconds(12);
+                options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                options.QueueLimit = 2;
+            }));
+
         services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddApplication();
-        services.AddInfrastructure(_configuration);        
+        services.AddInfrastructure(_configuration); 
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+        app.UseRateLimiter();
+
+
+        app.Use((context, next) =>
+        {
+            context.Request.EnableBuffering();
+            context.Response.OnStarting(() =>
+            {
+                context.Response.Headers.Remove("Server");
+                context.Response.Headers.Remove("X-Powered-By");
+                context.Response.Headers.Remove("X-SourceFiles");
+
+                return Task.CompletedTask;
+            });
+
+            return next();
+        });
+
+
         // Configure the HTTP request pipeline.
         if (env.IsDevelopment())
         {
@@ -39,7 +70,10 @@ public class Startup
             app.UseSwaggerUI();
         }
 
+        app.UseRouting();
         app.UseAuthorization();
+
+        app.UseMiddleware<ExceptionMiddleware>();
 
         app.UseEndpoints(endpoints =>
         {

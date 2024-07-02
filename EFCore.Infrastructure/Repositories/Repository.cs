@@ -9,8 +9,8 @@ namespace EFCore.Infrastructure.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        private readonly HeroContext Context;
-        private readonly DbSet<TEntity> Entity;
+        protected readonly HeroContext Context;
+        protected readonly DbSet<TEntity> Entity;
 
         public Repository(HeroContext context)
         {

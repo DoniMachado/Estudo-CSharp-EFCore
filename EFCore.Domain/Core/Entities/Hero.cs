@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using EFCore.Domain.Common.Entities;
+using EFCore.Domain.Common.Exceptions;
 
 namespace EFCore.Domain.Core.Entities;
 
@@ -15,6 +16,7 @@ public class Hero : Entity
 
     public Hero(string name) : base()
     {
+        DomainException.When(string.IsNullOrEmpty(name), "Invalid Hero. Name is required.");
         Name = name;
     }
 

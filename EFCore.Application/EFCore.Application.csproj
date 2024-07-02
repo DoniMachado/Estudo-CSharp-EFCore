@@ -3,16 +3,13 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Common\Interfaces\**" />
-    <Compile Remove="Core\**" />
     <EmbeddedResource Remove="Common\Interfaces\**" />
-    <EmbeddedResource Remove="Core\**" />
     <None Remove="Common\Interfaces\**" />
-    <None Remove="Core\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,10 +17,15 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EFCore.Domain\EFCore.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\EventHandlers\" />
   </ItemGroup>
 
 </Project>

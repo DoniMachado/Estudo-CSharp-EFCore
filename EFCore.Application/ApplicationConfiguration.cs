@@ -1,6 +1,8 @@
-﻿using EFCore.Application.Common.EventHandlers;
+﻿using EFCore.Application.Common.Behaviors;
+using EFCore.Application.Common.EventHandlers;
 using EFCore.Domain.Common.Interfaces;
 using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -16,6 +18,8 @@ public static class ApplicationConfiguration
         services.AddMediatR(cfg =>
         {
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>),typeof(UnhandledExceptionBehavior<,>));
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>),typeof(ValidationBehavior<,>));
         });
 
         services.AddScoped<IDomainEventHandler, DomainEventHandler>();
