@@ -18,7 +18,7 @@ namespace EFCore.Infrastructure.Repositories
             Entity = context.Set<TEntity>();
         }
 
-        public async Task InsertAsync(TEntity entity)
+        public virtual async Task InsertAsync(TEntity entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
 
@@ -26,7 +26,7 @@ namespace EFCore.Infrastructure.Repositories
             await Context.SaveChangesAsync();
         }
 
-        public async Task InsertAsync(IEnumerable<TEntity> entities)
+        public virtual async Task InsertAsync(IEnumerable<TEntity> entities)
         {
             if (entities is null || entities.Any())
                 throw new ArgumentNullException(nameof(entities));
@@ -35,7 +35,7 @@ namespace EFCore.Infrastructure.Repositories
             await Context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(TEntity entity)
+        public virtual async Task UpdateAsync(TEntity entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
 
@@ -43,7 +43,7 @@ namespace EFCore.Infrastructure.Repositories
             await Context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(IEnumerable<TEntity> entities)
+        public virtual async Task UpdateAsync(IEnumerable<TEntity> entities)
         {
             if (entities is null || entities.Any())
                 throw new ArgumentNullException(nameof(entities));
@@ -54,7 +54,7 @@ namespace EFCore.Infrastructure.Repositories
             await Context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(TEntity entity)
+        public virtual async Task DeleteAsync(TEntity entity)
         {
             ArgumentNullException.ThrowIfNull(entity);
 
@@ -62,7 +62,7 @@ namespace EFCore.Infrastructure.Repositories
             await Context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(IEnumerable<TEntity> entities)
+        public virtual async Task DeleteAsync(IEnumerable<TEntity> entities)
         {            
             if (entities is null || entities.Any())
                 throw new ArgumentNullException(nameof(entities));
@@ -73,7 +73,7 @@ namespace EFCore.Infrastructure.Repositories
             await Context.SaveChangesAsync();
         }
 
-        public async Task<TEntity> GetByIdAsync(long id)
+        public virtual async Task<TEntity> GetByIdAsync(long id)
         {
             return await Context.WithNoLock(async () =>
             {
@@ -81,7 +81,7 @@ namespace EFCore.Infrastructure.Repositories
             } );
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await Context.WithNoLock(async () =>
             {
@@ -89,7 +89,7 @@ namespace EFCore.Infrastructure.Repositories
             });
         }
 
-        public async Task<ResultPaginationVO> GetPaginatedAsync(int pageIndex = 1, int pageSize = 25)
+        public virtual async Task<ResultPaginationVO> GetPaginatedAsync(int pageIndex = 1, int pageSize = 25)
         {
             return await Context.WithNoLock(async () =>
             {

@@ -12,7 +12,7 @@ namespace EFCore.Infrastructure.Repositories
         public HeroRepository(HeroContext context):base(context) 
         { }
 
-        public async Task<Hero> GetByIdAsync(long id)
+        public override async Task<Hero> GetByIdAsync(long id)
         {
             return await base.Context.WithNoLock(async () =>
             {
