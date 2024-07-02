@@ -14,5 +14,5 @@ public class DomainEventHandler(IPublisher mediator): IDomainEventHandler
     }
 
     private INotification GetNotificationCorrespondingToDomainEvent(DomainEvent domainEvent)
-        => (INotification)Activator.CreateInstance(typeof(DomainNotification<>).MakeGenericType(domainEvent.GetType()), domainEvent);
+        => (INotification)Activator.CreateInstance(typeof(DomainEventNotification<>).MakeGenericType(domainEvent.GetType()), domainEvent);
 }
