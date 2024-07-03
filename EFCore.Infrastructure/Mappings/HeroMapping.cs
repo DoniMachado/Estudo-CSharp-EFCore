@@ -12,7 +12,8 @@ public class HeroMapping: EntityMapping<Hero>
 
         builder.Property(p => p.Name)
             .HasMaxLength(256)
-            .IsRequired();
+            .IsRequired()
+            .HasColumnType("VARCHAR(256)");
 
         builder.HasOne(h => h.SecretIdentity)
             .WithOne(s => s.Hero);

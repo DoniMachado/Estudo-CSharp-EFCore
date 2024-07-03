@@ -40,7 +40,7 @@ public class Startup
 
         var builder = new ConfigurationBuilder()
             .AddJsonFile($"appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{environment}.json", optional: true)
             .AddEnvironmentVariables();
 
         _configuration = builder.Build();

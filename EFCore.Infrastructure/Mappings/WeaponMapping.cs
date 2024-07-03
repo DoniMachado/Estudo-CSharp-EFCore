@@ -12,14 +12,13 @@ public class WeaponMapping : EntityMapping<Weapon>
 
         builder.Property(p => p.Name)
             .HasMaxLength(256)
-            .IsRequired();
+            .IsRequired()
+            .HasColumnType("VARCHAR(256)");
 
         builder.Property(p => p.Description)          
-            .IsRequired(false);
-
-        builder.Property(p => p.HeroId)            
-            .IsRequired();
-
+            .IsRequired(false)
+            .HasColumnType("VARCHAR(MAX)");
+            
         builder.HasOne(w => w.Hero)
             .WithMany(h => h.Weapons)
             .HasForeignKey(w => w.HeroId)

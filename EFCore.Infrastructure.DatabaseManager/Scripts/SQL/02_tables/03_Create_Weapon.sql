@@ -1,0 +1,21 @@
+﻿IF NOT EXISTS (SELECT * FROM sys.objeCts WHERE object_id = OBJECT_ID(N'dbo.Weapon') AND type in (N'U'))
+BEGIN
+	CREATE TABLE [dbo].[Weapon](
+		[Id]			BIGINT				NOT NULL,
+
+		[Name]			VARCHAR(256)		NOT NULL,
+		[Description]	VARCHAR(MAX)		NOT NULL,
+		[HeroId]		BIGINT				NOT NULL,
+		
+		[CreatedAt]		DATETIMEOFFSET		NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+		[ModifiedBy]	VARCHAR(256)		NOT NULL,
+		[UpdatedAt]		DATETIMEOFFSET		NULL,
+		[DeletedAt]		DATETIMEOFFSET		NULL,
+		[LastAction]	VARCHAR(64)			NOT NULL,
+		[IsDeleted]		BIT					NOT NULL  DEFAULT 0,
+
+
+		CONSTRAINT PK_Weapon_Id PRIMARY KEY CLUSTERED (ID),
+		CONSTRAINT FK_Weapon_HeroId FOREIGN KEY (HeroId) REFERENCES [dbo].[Hero](Id)
+		)
+END

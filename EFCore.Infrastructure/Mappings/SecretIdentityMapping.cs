@@ -12,7 +12,8 @@ public class SecretIdentityMapping : EntityMapping<SecretIdentity>
 
         builder.Property(p => p.Name)
             .HasMaxLength(256)
-            .IsRequired();
+            .IsRequired()
+            .HasColumnType("VARCHAR(256)");
 
         builder.HasOne(s => s.Hero)
             .WithOne(h => h.SecretIdentity)

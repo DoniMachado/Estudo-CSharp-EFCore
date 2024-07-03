@@ -1,0 +1,18 @@
+﻿IF NOT EXISTS (SELECT * FROM sys.objeCts WHERE object_id = OBJECT_ID(N'dbo.Hero') AND type in (N'U'))
+BEGIN
+	CREATE TABLE [dbo].[Hero](
+		[Id]			BIGINT				NOT NULL,
+
+		[Name]			VARCHAR(256)		NOT NULL,
+		
+		[CreatedAt]		DATETIMEOFFSET		NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+		[ModifiedBy]	VARCHAR(256)		NOT NULL,
+		[UpdatedAt]		DATETIMEOFFSET		NULL,
+		[DeletedAt]		DATETIMEOFFSET		NULL,
+		[LastAction]	VARCHAR(64)			NOT NULL,
+		[IsDeleted]		BIT					NOT NULL DEFAULT 0,
+
+
+		CONSTRAINT PK_Hero_Id PRIMARY KEY CLUSTERED (ID)
+		)
+END

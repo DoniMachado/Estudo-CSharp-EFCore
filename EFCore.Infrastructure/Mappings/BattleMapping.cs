@@ -12,16 +12,20 @@ public class BattleMapping : EntityMapping<Battle>
 
         builder.Property(p => p.Name)
             .HasMaxLength(256)
-            .IsRequired();
+            .IsRequired()
+            .HasColumnType("VARCHAR(256)");
 
         builder.Property(p => p.Description)                
-            .IsRequired();
+            .IsRequired()
+            .HasColumnType("VARCHAR(MAX)");
 
-        builder.Property(p => p.InitialDate)          
-          .IsRequired();
+        builder.Property(p => p.InitialDate)
+          .IsRequired()
+          .HasColumnType("DATETIMEOFFSET");
 
-        builder.Property(p => p.FinalDate)          
-          .IsRequired(false);
+        builder.Property(p => p.FinalDate)
+          .IsRequired(false)
+          .HasColumnType("DATETIMEOFFSET");
 
         builder.HasMany(b => b.Heroes)
             .WithOne(hb => hb.Battle);
