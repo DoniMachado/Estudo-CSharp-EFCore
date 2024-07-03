@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Domain", "EFCore.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Infrastructure", "EFCore.Infrastructure\EFCore.Infrastructure.csproj", "{40CE69E7-F1CC-43A7-AAD2-9569A3B196D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Application", "EFCore.Application\EFCore.Application.csproj", "{D9B388FF-EA65-4EA8-B699-29EABA274CB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Application", "EFCore.Application\EFCore.Application.csproj", "{D9B388FF-EA65-4EA8-B699-29EABA274CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Infrastructure.DatabaseManager", "EFCore.Infrastructure.DatabaseManager\EFCore.Infrastructure.DatabaseManager.csproj", "{1D62B5D0-0BDE-4B5E-9398-51BC302CDA98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D9B388FF-EA65-4EA8-B699-29EABA274CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9B388FF-EA65-4EA8-B699-29EABA274CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9B388FF-EA65-4EA8-B699-29EABA274CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D62B5D0-0BDE-4B5E-9398-51BC302CDA98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D62B5D0-0BDE-4B5E-9398-51BC302CDA98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D62B5D0-0BDE-4B5E-9398-51BC302CDA98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D62B5D0-0BDE-4B5E-9398-51BC302CDA98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
