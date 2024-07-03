@@ -8,8 +8,8 @@ public class HeroBattle : Entity
     public long BattleId { get; private set; }
 
 
-    public Hero Hero { get; set; }
-    public Battle Battle { get; set; }
+    public virtual Hero Hero { get; set; }
+    public virtual Battle Battle { get; set; }
 
     public HeroBattle(long heroId, long battleId)
     {

@@ -10,7 +10,7 @@ public class Weapon : Entity
     public string Description { get; private set; }
     public long HeroId { get; private set; }
 
-    public Hero Hero { get; set; }
+    public virtual Hero Hero { get; set; }
 
     public Weapon(string name, string description, long heroId)
     {

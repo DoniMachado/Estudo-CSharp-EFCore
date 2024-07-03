@@ -15,12 +15,14 @@ public static class InfrastructureConfiguration
         services.AddDbContext<HeroContext>(options =>
                   options
                   .UseLazyLoadingProxies()
-                  .UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-                  sqlServerOptionsAction: sqlOptions =>
-                  {
-                      sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-                      sqlOptions.CommandTimeout(180);
-                  })
+                  .UseSqlServer(configuration.GetConnectionString("DefaultConnection")                  
+                  //Isso deu problema com o WithNoLock
+                  //sqlServerOptionsAction: sqlOptions =>
+                  //{
+                  //    sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                  //    sqlOptions.CommandTimeout(180);
+                  //}
+                  )
                   .ConfigureWarnings(warning => warning.Ignore(CoreEventId.DetachedLazyLoadingWarning))                  
                   );
 

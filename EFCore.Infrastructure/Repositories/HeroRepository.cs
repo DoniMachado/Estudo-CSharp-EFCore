@@ -62,7 +62,7 @@ namespace EFCore.Infrastructure.Repositories
 
                 int pagesToSkip = pageIndex > 1 ? pageIndex - 1 : 0;
 
-                var list = await data.Skip(pagesToSkip * pageSize)
+                var list = await data.OrderBy(d => d.Audit.CreatedAt).Skip(pagesToSkip * pageSize)
                  .Take(pageSize).ToListAsync();
 
                 int totalPages = GetTotalPages(count, pageSize);

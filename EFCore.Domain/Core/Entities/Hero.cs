@@ -7,8 +7,8 @@ namespace EFCore.Domain.Core.Entities;
 public class Hero : Entity
 {
     public string Name { get; private set; }
-
-    public SecretIdentity SecretIdentity { get; set; }
+    
+    public virtual SecretIdentity SecretIdentity { get; set; }
     [JsonIgnore]
     public virtual ICollection<HeroBattle> Battles { get; set; }
     [JsonIgnore]
