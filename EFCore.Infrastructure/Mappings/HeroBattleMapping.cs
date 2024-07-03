@@ -7,9 +7,7 @@ namespace EFCore.Infrastructure.Mappings;
 public class HeroBattleMapping : EntityMapping<HeroBattle>
 {
     public override void Configure(EntityTypeBuilder<HeroBattle> builder)
-    {
-        base.Configure(builder);
-
+    {      
         builder.HasOne(hb => hb.Hero)
             .WithMany(h => h.Battles)
             .HasForeignKey(hb => hb.HeroId)
@@ -26,5 +24,7 @@ public class HeroBattleMapping : EntityMapping<HeroBattle>
 
 
         builder.ToTable("HeroBattle");
+
+        base.Configure(builder);
     }
 }

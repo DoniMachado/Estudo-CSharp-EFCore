@@ -7,9 +7,7 @@ namespace EFCore.Infrastructure.Mappings;
 public class WeaponMapping : EntityMapping<Weapon>
 {
     public override void Configure(EntityTypeBuilder<Weapon> builder)
-    {
-        base.Configure(builder);
-
+    {        
         builder.Property(p => p.Name)
             .HasMaxLength(256)
             .IsRequired()
@@ -25,5 +23,7 @@ public class WeaponMapping : EntityMapping<Weapon>
             .IsRequired();
 
         builder.ToTable("Weapon");
+
+        base.Configure(builder);
     }
 }

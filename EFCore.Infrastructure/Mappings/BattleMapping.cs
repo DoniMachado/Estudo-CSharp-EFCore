@@ -7,9 +7,7 @@ namespace EFCore.Infrastructure.Mappings;
 public class BattleMapping : EntityMapping<Battle>
 {
     public override void Configure(EntityTypeBuilder<Battle> builder)
-    {
-        base.Configure(builder);
-
+    {      
         builder.Property(p => p.Name)
             .HasMaxLength(256)
             .IsRequired()
@@ -32,5 +30,7 @@ public class BattleMapping : EntityMapping<Battle>
 
 
         builder.ToTable("Battle");
+
+        base.Configure(builder);
     }
 }

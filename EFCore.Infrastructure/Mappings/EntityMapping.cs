@@ -21,7 +21,7 @@ public abstract class EntityMapping<TEntity> : IEntityTypeConfiguration<TEntity>
             .IsRequired()
             .HasColumnName("CreatedAt")
             .HasColumnType("DATETIMEOFFSET")
-            .HasDefaultValue("SYSDATETIMEOFFSET()");
+            .HasDefaultValueSql("SYSDATETIMEOFFSET()");
 
         builder.OwnsOne(p => p.Audit)
             .Property(a => a.ModifiedBy)

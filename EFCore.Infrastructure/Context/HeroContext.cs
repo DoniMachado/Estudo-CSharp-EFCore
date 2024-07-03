@@ -39,6 +39,8 @@ public class HeroContext : DbContext
             modelBuilder.AddIsDeletedBehavior(entity);
 
         }
+
+        base.OnModelCreating(modelBuilder);
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

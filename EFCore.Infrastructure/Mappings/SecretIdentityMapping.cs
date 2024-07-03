@@ -7,9 +7,7 @@ namespace EFCore.Infrastructure.Mappings;
 public class SecretIdentityMapping : EntityMapping<SecretIdentity>
 {
     public override void Configure(EntityTypeBuilder<SecretIdentity> builder)
-    {
-        base.Configure(builder);
-
+    {       
         builder.Property(p => p.Name)
             .HasMaxLength(256)
             .IsRequired()
@@ -21,5 +19,7 @@ public class SecretIdentityMapping : EntityMapping<SecretIdentity>
             .IsRequired();
 
         builder.ToTable("SecretIdentity");
+
+        base.Configure(builder);
     }
 }

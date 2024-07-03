@@ -7,9 +7,7 @@ namespace EFCore.Infrastructure.Mappings;
 public class HeroMapping: EntityMapping<Hero>
 {
     public override void Configure(EntityTypeBuilder<Hero> builder)
-    {
-        base.Configure(builder);
-
+    {       
         builder.Property(p => p.Name)
             .HasMaxLength(256)
             .IsRequired()
@@ -25,5 +23,7 @@ public class HeroMapping: EntityMapping<Hero>
             .WithOne(w => w.Hero);
 
         builder.ToTable("Hero");
+
+        base.Configure(builder);
     }
 }
