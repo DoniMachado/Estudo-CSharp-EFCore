@@ -17,7 +17,7 @@ public class Entity: IHasDomainEvent
 
     [JsonIgnore]
 
-    public HashSet<DomainEvent> DomainEvents { get; set; } = [];
+    public HashSet<DomainEvent> DomainEvents { get; set; } = new();
 
     public Entity()
     {

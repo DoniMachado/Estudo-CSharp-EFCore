@@ -13,7 +13,7 @@ public class Battle : Entity
     [JsonIgnore]
     public virtual ICollection<HeroBattle> Heroes { get; set; }
 
-    public Battle(string name, string description, DateTimeOffset initialDate, DateTimeOffset? finalDate) : base()
+    public Battle(string name, string description, DateTimeOffset initialDate, DateTimeOffset? finalDate)
     {
         Name = name;
         Description = description;

@@ -11,7 +11,7 @@ public class HeroBattle : Entity
     public Hero Hero { get; set; }
     public Battle Battle { get; set; }
 
-    public HeroBattle(long heroId, long battleId) : base()
+    public HeroBattle(long heroId, long battleId)
     {
         HeroId = heroId;
         BattleId = battleId;

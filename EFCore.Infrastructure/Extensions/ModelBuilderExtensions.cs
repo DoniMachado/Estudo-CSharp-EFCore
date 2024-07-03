@@ -8,7 +8,7 @@ public static class ModelBuilderExtensions
 {
     public static ModelBuilder AddIsDeletedBehavior(this ModelBuilder modelBuilder, IMutableEntityType entityType)
     {
-        var entityStatusProperty = entityType.GetProperty("IsDeleted");
+        var entityStatusProperty = entityType.FindProperty("IsDeleted");
 
         if (entityStatusProperty is not null && entityStatusProperty.ClrType == typeof(bool))
         {

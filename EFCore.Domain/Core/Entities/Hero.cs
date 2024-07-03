@@ -14,7 +14,7 @@ public class Hero : Entity
     [JsonIgnore]
     public virtual ICollection<Weapon> Weapons { get; set; }
 
-    public Hero(string name) : base()
+    public Hero(string name)
     {
         DomainException.When(string.IsNullOrEmpty(name), "Invalid Hero. Name is required.");
         Name = name;

@@ -9,7 +9,7 @@ public class SecretIdentity : Entity
 
     public Hero Hero { get; set; }
 
-    public SecretIdentity(string name, long heroId) : base()
+    public SecretIdentity(string name, long heroId)
     {
         Name = name;
         HeroId = heroId;

@@ -12,7 +12,7 @@ public class Weapon : Entity
 
     public Hero Hero { get; set; }
 
-    public Weapon(string name, string description, long heroId) : base()
+    public Weapon(string name, string description, long heroId)
     {
         Name = name;
         Description = description;
