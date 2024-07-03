@@ -18,6 +18,11 @@ public class ResponseCommand
         Result = result;
     }
 
+    public ResponseCommand(ResponseStatusCommand status)
+    {
+        Status = status;
+    }
+
     public ResponseCommand(object result, ResponseStatusCommand status)
     {
         Result = result;
