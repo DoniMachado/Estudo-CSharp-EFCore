@@ -2,6 +2,7 @@
 using EFCore.Infrastructure;
 using EFCore.WebAPI.Common.Middlewares;
 using Microsoft.AspNetCore.RateLimiting;
+using Serilog;
 using System.Threading.RateLimiting;
 
 namespace EFCore.WebAPI;
@@ -46,6 +47,8 @@ public class Startup
     {
         app.UseRateLimiter();
 
+        //Add support to logging request with SERILOG
+        app.UseSerilogRequestLogging();
 
         app.Use((context, next) =>
         {
@@ -69,7 +72,7 @@ public class Startup
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-
+       
         app.UseRouting();
         app.UseAuthorization();
 

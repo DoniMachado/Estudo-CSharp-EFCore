@@ -8,7 +8,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.Development.json" />
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Dumps\" />
+    <Folder Include="Scripts\SQL\01_runBefore\" />
+    <Folder Include="Scripts\SQL\02_tables\" />
+    <Folder Include="Scripts\SQL\03_indexes\" />
+    <Folder Include="Scripts\SQL\04_functions\" />
+    <Folder Include="Scripts\SQL\05_triggers\" />
+    <Folder Include="Scripts\SQL\06_procedures\" />
+    <Folder Include="Scripts\SQL\07_runAfter\" />
   </ItemGroup>
 
   <ItemGroup>

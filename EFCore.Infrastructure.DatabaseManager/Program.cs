@@ -3,7 +3,7 @@ using EFCore.Infrastructure.DatabaseManager.Common.Consts;
 using EFCore.Infrastructure.DatabaseManager.Common.Enum;
 
 
-const string LOCAL = "local";
+const string LOCAL = "Local";
 
 async Task MenuEnvironment(string[] args = null)
 {
@@ -32,8 +32,8 @@ async Task MenuEnvironment(string[] args = null)
             return opt switch
             {
                 1 => EnvironmentDumpManager.Development,
-                2 => EnvironmentDumpManager.Staging,
-                3 => EnvironmentDumpManager.Production,
+               // 2 => EnvironmentDumpManager.Staging,
+                //3 => EnvironmentDumpManager.Production,
                 _ => EnvironmentDumpManager.Development
             };
         }
@@ -58,8 +58,8 @@ async Task MenuEnvironment(string[] args = null)
             return option switch
             {
                 "development" => EnvironmentDumpManager.Development,
-                "staging" => EnvironmentDumpManager.Staging,
-                "production" => EnvironmentDumpManager.Production,
+                //"staging" => EnvironmentDumpManager.Staging,
+                //"production" => EnvironmentDumpManager.Production,
                  _ => EnvironmentDumpManager.Development
             } ;
         }
@@ -164,7 +164,6 @@ async Task Run(EnvironmentDumpManager environmentChoice, EnvironmentDumpAction a
     }
     catch (Exception ex)
     {
-
         string innerException = ex.InnerException is not null ? ex.InnerException.Message: "[]";
         ConsoleDraw.DrawException($"{ex.Message} - {innerException} - {ex.StackTrace.ToString()}");
     }

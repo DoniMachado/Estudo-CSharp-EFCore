@@ -5,17 +5,14 @@ using EFCore.Infrastructure.DatabaseManager.Scripts.SQL;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using EFCore.Application;
-using EFCore.Infrastructure;
 using Microsoft.Extensions.Logging;
-using EFCore.Application.Common.Behaviors;
-using MediatR;
 using System.Reflection;
 
 namespace EFCore.Infrastructure.DatabaseManager.Common;
 
 public class Startup
 {
-    private const string LOCAL = "local";
+    private const string LOCAL = "Local";
 
     private readonly IServiceCollection _serviceCollection;
     private readonly IConfiguration _configuration;
@@ -31,9 +28,9 @@ public class Startup
 
         var environment = environmentChoice switch
         {
-            EnvironmentDumpManager.Development => "development",
-            EnvironmentDumpManager.Staging => "staging",
-            EnvironmentDumpManager.Production => "production",
+            EnvironmentDumpManager.Development => "",
+            //EnvironmentDumpManager.Staging => "Staging",
+           // EnvironmentDumpManager.Production => "Production",
             _ => ""
         };
 
@@ -51,7 +48,7 @@ public class Startup
         _scriptRunner = new ScriptRunner(_configuration);
         _action = actionChoice;
 
-        ConsoleDraw.DrawEnvironment(environment is "" ? "local" : environment);
+        ConsoleDraw.DrawEnvironment(environment is "" ? LOCAL : environment);
     }
 
     public async Task RunAsync()

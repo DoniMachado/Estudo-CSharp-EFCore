@@ -38,8 +38,8 @@ public static class ConsoleDraw
         Console.WriteLine(Environment);
         Console.WriteLine("\t 0 - Exit");
         Console.WriteLine("\t 1 - Development");
-        Console.WriteLine("\t 2 - Staging");
-        Console.WriteLine("\t 3 - Production");
+        //Console.WriteLine("\t 2 - Staging");
+        //Console.WriteLine("\t 3 - Production");
         Console.WriteLine("\t =>");
     }
 

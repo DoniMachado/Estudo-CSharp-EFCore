@@ -1,0 +1,8 @@
+Use [MASTER]
+
+GO
+
+IF (SELECT DB_ID('HeroApp')) IS NULL
+BEGIN
+CREATE DATABASE [HeroApp]
+END
