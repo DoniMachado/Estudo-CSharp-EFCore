@@ -29,10 +29,6 @@
     <Folder Include="Dumps\" />
     <Folder Include="Scripts\SQL\01_runBefore\" />
     <Folder Include="Scripts\SQL\03_indexes\" />
-    <Folder Include="Scripts\SQL\04_functions\" />
-    <Folder Include="Scripts\SQL\05_triggers\" />
-    <Folder Include="Scripts\SQL\06_procedures\" />
-    <Folder Include="Scripts\SQL\07_runAfter\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +64,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Scripts\SQL\02_tables\05_Create_HeroBattle.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\SQL\03_indexes\CantDelete.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\SQL\04_functions\CantDelete.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\SQL\05_triggers\CantDelete.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\SQL\06_procedures\CantDelete.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\SQL\07_runAfter\CantDelete.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
