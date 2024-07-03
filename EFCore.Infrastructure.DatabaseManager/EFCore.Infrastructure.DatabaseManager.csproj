@@ -10,13 +10,6 @@
   <ItemGroup>
     <None Remove="appsettings.Development.json" />
     <None Remove="appsettings.json" />
-    <None Remove="Scripts\SQL\02_tables\01_Create_Hero.sql" />
-    <None Remove="Scripts\SQL\02_tables\02_Create_SecretIdentity.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Scripts\SQL\02_tables\02_Create_SecretIdentity.sql" />
-    <Compile Include="Scripts\SQL\02_tables\01_Create_Hero.sql" />
   </ItemGroup>
 
   <ItemGroup>
