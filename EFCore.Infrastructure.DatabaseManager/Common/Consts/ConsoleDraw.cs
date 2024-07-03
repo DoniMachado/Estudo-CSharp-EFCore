@@ -40,7 +40,7 @@ public static class ConsoleDraw
         Console.WriteLine("\t 1 - Development");
         //Console.WriteLine("\t 2 - Staging");
         //Console.WriteLine("\t 3 - Production");
-        Console.WriteLine("\t =>");
+        Console.Write("\t =>");
     }
 
     public static void DrawMenuAction(string environment)
@@ -56,7 +56,7 @@ public static class ConsoleDraw
         if (environment == EnvironmentDumpManager.Development.ToString())
             Console.WriteLine("\t 3 - Reset");
 
-        Console.WriteLine("\t =>");
+        Console.Write("\t =>");
     }
 
     public static void DrawInvalidOption()
@@ -104,6 +104,6 @@ public static class ConsoleDraw
         Console.WriteLine(Line);
         Console.WriteLine($"\t Environment {environment}");
         Console.WriteLine("Please insert the client name");
-        Console.WriteLine("\t =>");
+        Console.Write("\t =>");
     }
 }
