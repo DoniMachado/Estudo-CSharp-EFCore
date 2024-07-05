@@ -8,6 +8,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -35,7 +36,17 @@ public class RegisterHeroCommandHandler : IRequestHandler<RegisterHeroCommand, R
 
     public async Task<ResponseCommand> Handle(RegisterHeroCommand request, CancellationToken cancellationToken)
     {
-        Hero hero = new(request.Name);
+        Hero hero = await _repository.GetByNameAsync(request.Name);
+
+        if (hero is not null)
+        {
+            var response = new ResponseCommand(ResponseStatusCommand.NotAllowed);
+            response.AddError("Already Exists Hero", $"Already Exists Hero with Name: {request.Name}");
+            return response;
+        }
+
+
+        hero = new(request.Name);
             
         await _repository.InsertAsync(hero);
 
