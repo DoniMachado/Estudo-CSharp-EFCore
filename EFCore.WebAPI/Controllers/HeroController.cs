@@ -1,8 +1,8 @@
 using EFCore.Application.Core.CommandsAndHandlers;
 using EFCore.Application.Core.QueriesAndHandlers;
 using EFCore.Domain.Common.ValueObject;
+using EFCore.Domain.Core.Dtos;
 using EFCore.Domain.Core.Entities;
-using EFCore.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -24,53 +24,53 @@ namespace EFCore.WebAPI.Controllers
         }
 
         [HttpGet("Id/{id}")]
-        [SwaggerResponse((int)System.Net.HttpStatusCode.OK, Type = typeof(HeroResponseModel))]
-        public async Task<ActionResult<HeroResponseModel>> GetById(long id)
+        [SwaggerResponse((int)System.Net.HttpStatusCode.OK, Type = typeof(HeroDto))]
+        public async Task<ActionResult<HeroDto>> GetById(long id)
         {
             var response = await Mediator.Send(new GetHeroByIdCommandQuery(id));
             if(response is not null && response.Result is not null)
-                response.SetResult(HeroResponseModel.ConvertFromEntity(response.Result as Hero));
+                response.SetResult(HeroDto.ConvertFromEntity(response.Result as Hero));
 
-            return GetReturn<HeroResponseModel>(response);   
+            return GetReturn<HeroDto>(response);   
         }
 
         [HttpGet("Name/{name}")]
-        [SwaggerResponse((int)System.Net.HttpStatusCode.OK, Type = typeof(HeroResponseModel))]
-        public async Task<ActionResult<HeroResponseModel>> GetByName(string name)
+        [SwaggerResponse((int)System.Net.HttpStatusCode.OK, Type = typeof(HeroDto))]
+        public async Task<ActionResult<HeroDto>> GetByName(string name)
         {
             var response = await Mediator.Send(new GetHeroByNameCommandQuery(name));
             if(response is not null && response.Result is not null)
-                response.SetResult(HeroResponseModel.ConvertFromEntity(response.Result as Hero));
+                response.SetResult(HeroDto.ConvertFromEntity(response.Result as Hero));
 
-            return GetReturn<HeroResponseModel>(response); 
+            return GetReturn<HeroDto>(response); 
         }
 
         [HttpPut("{id}")]
         [SwaggerResponse((int)System.Net.HttpStatusCode.NoContent)]
-        public async Task<ActionResult<HeroResponseModel>> Put(long id, AlterHeroCommand command)
+        public async Task<ActionResult<HeroDto>> Put(long id, AlterHeroCommand command)
         {
             if (command.Id != id)
                 return BadRequest();
 
             var response = await Mediator.Send(command);
-            return GetReturn<HeroResponseModel>(response, false);
+            return GetReturn<HeroDto>(response, false);
         }
 
         [HttpPost()]
         [SwaggerResponse((int)System.Net.HttpStatusCode.NoContent)]
-        public async Task<ActionResult<HeroResponseModel>> Post(RegisterHeroCommand command)
+        public async Task<ActionResult<HeroDto>> Post(RegisterHeroCommand command)
         {
             var response = await Mediator.Send(command);
-            return GetReturn<HeroResponseModel>(response, false);
+            return GetReturn<HeroDto>(response, false);
         }
 
 
         [HttpDelete("{id}")]
         [SwaggerResponse((int)System.Net.HttpStatusCode.NoContent)]
-        public async Task<ActionResult<HeroResponseModel>> Delete(long id)
+        public async Task<ActionResult<HeroDto>> Delete(long id)
         {
             var response = await Mediator.Send(new RemoveHeroCommand(id));
-            return GetReturn<HeroResponseModel>(response,false);
+            return GetReturn<HeroDto>(response,false);
         }
     }
 }

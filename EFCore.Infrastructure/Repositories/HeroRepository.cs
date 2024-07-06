@@ -1,4 +1,5 @@
 ﻿using EFCore.Domain.Common.ValueObject;
+using EFCore.Domain.Core.Dtos;
 using EFCore.Domain.Core.Entities;
 using EFCore.Domain.Core.Interfaces;
 using EFCore.Infrastructure.Context;
@@ -69,11 +70,7 @@ namespace EFCore.Infrastructure.Repositories
 
                 return list is null ?
                new ResultPaginationVO(0, 0, 0, 0, null) :
-               new ResultPaginationVO(count, totalPages, pageIndex, pageSize, list.Select(h => new
-               {
-                   h.Id,
-                   h.Name
-               }));
+               new ResultPaginationVO(count, totalPages, pageIndex, pageSize, list.Select(HeroDto.ConvertFromEntity));
             });
         }
 
