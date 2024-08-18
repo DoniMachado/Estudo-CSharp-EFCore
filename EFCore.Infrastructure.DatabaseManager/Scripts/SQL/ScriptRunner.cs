@@ -1,5 +1,7 @@
 ﻿using DbUp;
+using DbUp.Engine;
 using DbUp.ScriptProviders;
+using DbUp.Support;
 using EFCore.Infrastructure.DatabaseManager.Common.Consts;
 using EFCore.Infrastructure.DatabaseManager.Common.Helpers;
 using Microsoft.Data.SqlClient;
@@ -56,10 +58,14 @@ public class ScriptRunner
                DeployChanges.To
                    .SqlDatabase(_configuration.GetConnectionString("DefaultConnection"))
                    .WithScriptsFromFileSystem(
-                    scriptPath, new FileSystemScriptOptions
                     {
-                        IncludeSubDirectories = true
-                    }
+                        IncludeSubDirectories = true,
+                    },
+                    sqlScriptOptions: new SqlScriptOptions
+                    {
+                        //ScriptType = ScriptType.RunOnce   Or 
+                        //ScriptType = ScriptType.RunAlways
+        }
                    )
                    .WithTransactionPerScript()
                    .WithVariablesDisabled()
@@ -94,7 +100,7 @@ public class ScriptRunner
     private void EnsureDatabaseBeforeOrAfter(string scriptPath)
     {
         try
-        {
+        {            
             var execPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var rootPath = AppRootPathMatcher.Match(execPath).Value;
             var scriptFullPath = Path.Combine(rootPath, scriptPath);
